@@ -5,6 +5,7 @@
 Voicemaker is a user-friendly web application designed to convert text into spoken words using AWS Polly, a cloud service by Amazon Web Services that provides advanced text-to-speech capabilities. This application allows users to input text and receive high-quality, natural-sounding speech output, leveraging  [AWS Polly](https://aws.amazon.com/polly/)'s deep learning models. With support for various languages and voices, Voicemaker can be used for a wide range of applications, from enhancing accessibility to creating interactive audio content. 
 
 The primary goal of this project is to provide a seamless and intuitive interface for users to generate speech from text, offering playback controls and download options for the generated audio. This initial phase focuses on core functionality and user experience, with future phases planned to enhance features and capabilities.
+![image](https://github.com/user-attachments/assets/1350847a-3f0b-4508-8933-0f440521ab18)
 
 
 
