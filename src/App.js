@@ -1,25 +1,29 @@
 import './App.css';
 import Header from './components/Header';
 import Section from './components/Section';
-import {useState} from 'react';
+import { useState } from 'react';
 import AWS from 'aws-sdk';
-import {toast, Toaster} from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import AudioPlayer from './components/AudioPlayer';
 
 AWS.config.update({
     accessKeyId: process.env.REACT_APP_CLIENTID,
     secretAccessKey: process.env.REACT_APP_SECRETKEY,
     region: process.env.REACT_APP_REGION
-})
+});
 
 const polly = new AWS.Polly();
 
 function App() {
-
     const [text, setText] = useState('');
     const [audioFile, setAudioFile] = useState();
 
     const convertTextToSpeech = () => {
+        if (!text.trim()) {
+            toast.error('Please enter some text.');
+            return;
+        }
+
         polly.synthesizeSpeech({
             Text: text,
             OutputFormat: 'mp3',
@@ -32,7 +36,7 @@ function App() {
                 toast.success('Text converted to speech successfully!');
             }
         });
-    }
+    };
 
     return (
         <>
@@ -40,9 +44,12 @@ function App() {
                 <Header />
                 <Section text={text} setText={setText} convertTextToSpeech={convertTextToSpeech} />
             </div>
-            <Toaster
-                position="top-right"
-                reverseOrder={false}
+            <Toaster 
+                position="top-right" 
+                reverseOrder={false} 
+                toastOptions={{
+                    style: { fontSize: '14px', padding: '10px' }
+                }}
             />
             <AudioPlayer audioFile={audioFile} />
         </>
